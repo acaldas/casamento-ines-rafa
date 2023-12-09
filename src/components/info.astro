@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import carImg from "../assets/car.png";
+import carIcon from "../assets/car.svg";
+import honeymoonImg from "../assets/honeymoon.png";
+import honeymoonIcon from "../assets/honeymoon.svg";
+import seafoodImg from "../assets/seafood.png";
+import seafoodIcon from "../assets/seafood.svg";
+import telephoneImg from "../assets/telephone.png";
+import telephoneIcon from "../assets/telephone.svg";
+import logoBig from "../assets/logo-big.svg";
+
+const items = [
+  {
+    icon: carIcon,
+    image: carImg,
+    text: `<div>
+        <p class="mb-8">O local não tem <b>estacionamento</b> próprio, mas existem vários lugares na
+          área envolvente.</p>
+        <p>
+          Caso prefiram, há também o Parque de Estacionamento SABA – Castelo do
+          Queijo, na Praça de Gonçalves Zarco, 4100-429 Porto
+        </p>
+      </div>`,
+  },
+  {
+    icon: seafoodIcon,
+    image: seafoodImg,
+    text: `<p>
+            Informa-nos, por favor, se tens alguma <b>restrição alimentar</b>, com a maior antecedência possível.
+        </p>`,
+  },
+  {
+    title: "CONTACTO",
+    icon: telephoneIcon,
+    image: telephoneImg,
+    text: `<p>
+        <a href="tel:+351914377965"><b>Inês</b> 914377965</a>
+        <span class="mx-4">|</span>
+        <a href="tel:+351917280086"><b>Rafael</b> 917280086</a>
+    </p>`,
+  },
+  {
+    title: "LUA DE MEL",
+    icon: honeymoonIcon,
+    image: honeymoonImg,
+    text: `<div>
+        <p class="mb-8">Não esperamos nada mais do que a vossa presença. Mas caso queiram contribuir para a nossa <b>Lua de Mel</b>, deixamos o nosso IBAN:</p>
+        <p>PT50 0193 0000 1051 0849 7888 8</p>
+      </div>`,
+  },
+];
+---
+
+<div class="flex flex-col flex-1 pt-20 lg:pt-10">
+  {
+    items.map((item, index) => (
+      <>
+        {index > 0 && <div class="bg-line w-[1px] h-[79px] my-10 lg:mx-auto" />}
+        <div
+          class="flex items-end justify-between gap-10 overflow-hidden lg:flex-col lg:items-center"
+          id={item.title ? escape(item.title) : undefined}
+        >
+          <div class="text-2xl flex-shrink-0 max-w-[510px] lg:max-w-[90%] lg:text-center">
+            <Image
+              src={item.icon}
+              alt="Estacionamento"
+              class="mb-10 lg:mx-auto"
+            />
+            <Fragment set:html={item.text} />
+          </div>
+          <div class="flex-1 max-w-[40%]">
+            <Image
+              src={item.image}
+              alt="Estacionamento"
+              class="rounded-[110px] object-contain"
+            />
+          </div>
+        </div>
+      </>
+    ))
+  }
+  <Image src={logoBig} alt="Logo" class="mx-auto mt-[100px]" />
+</div>

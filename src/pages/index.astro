@@ -1,0 +1,47 @@
+---
+import Header from "../components/header.astro";
+import Info from "../components/info.astro";
+import Intro from "../components/intro.astro";
+import Form from "../components/form.astro";
+import Slide from "../components/slide.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SlideItem from "../components/slide-item.astro";
+---
+
+<BaseLayout
+  title="Casamento Inês & Rafael"
+  url=""
+  description="Entusiasmados por partilhar convosco o dia do nosso casamento!"
+>
+  <div class="bg-white p-6 h-screen overflow-hidden flex flex-col">
+    <Header links={["INFORMAÇÃO DE INTERESSE", "CONTACTO", "LUA DE MEL"]} />
+    <main class="text-green rounded-b-3xl overflow-hidden flex-1">
+      <Slide>
+        <SlideItem><Intro /></SlideItem>
+        <SlideItem
+          title="INFORMAÇÃO DE INTERESSE"
+          className="lg:overflow-visible"
+        >
+          <Info /><Form />
+        </SlideItem>
+      </Slide>
+    </main>
+  </div>
+</BaseLayout>
+
+<script>
+  window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+      const element = window.location.hash
+        ? document.querySelector(window.location.hash)
+        : null;
+      console.log("scroll", element);
+      if (!element) {
+        return null;
+      }
+      element.scrollIntoView();
+    },
+    false,
+  );
+</script>

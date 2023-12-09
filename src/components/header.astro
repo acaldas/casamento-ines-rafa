@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import LogoImage from "../assets/logo.svg";
+import ArrowImage from "../assets/arrow.svg";
+import HeaderLink from "./header-link.astro";
+
+interface Props {
+  links: string[];
+}
+
+const { links } = Astro.props;
+---
+
+<div
+  class="rounded-t-3xl z-10 bg-background px-[74px] py-[30px] flex items-center justify-between lg:pl-4 lg:pr-2 md:px-8"
+>
+  <Image
+    class="h-full object-contain object-left justify-self-start flex-shrink-0"
+    src={LogoImage}
+    alt="Casamento"
+    width={32}
+    height={40}
+    quality="high"
+  />
+  <div
+    class="flex justify-start gap-10 ml-20 flex-1 xl:gap-10 xl:ml-15 lg:ml-6 lg:gap-4 md:hidden"
+  >
+    {links.map((link) => <HeaderLink title={link} />)}
+  </div>
+  <div class="flex justify-start mr-24 xl:mr-0">
+    <a
+      class="text-orange flex group gap-2 pr-1 border-b-2 border-transparent hover:border-orange hover:font-bold"
+      href={`#${escape("CONFIRMAR PRESENÇA")}`}
+    >
+      <span>CONFIRMAR PRESENÇA</span>
+      <Image
+        src={ArrowImage}
+        alt={"CONFIRMAR PRESENÇA"}
+        class="group-hover:translate-x-1"
+      />
+    </a>
+  </div>
+</div>

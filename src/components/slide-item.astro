@@ -1,0 +1,54 @@
+---
+interface Props {
+  title?: string;
+  className?: string;
+  background?: "bg-background" | "bg-green";
+}
+const { title, background = "bg-background", className } = Astro.props;
+---
+
+<div
+  class=`slide-item min-h-full ${background} snap-always snap-start
+    px-[74px] pb-[74px] lg:px-[38px] lg:pb-[38px]  flex flex-col overflow-x-hidden ${className}`
+  id={title ? escape(title) : undefined}
+  data-title={title}
+>
+  <slot />
+</div>
+
+<script>
+  window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+      const slides = document.querySelectorAll(".slide-item");
+      if (!slides) {
+        return;
+      }
+
+      let options = {
+        rootMargin: "0px",
+        threshold: 0.7,
+      };
+
+      let observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) {
+            return;
+          }
+          const title = target.getAttribute("data-title") || "Intro";
+          window.gtag("event", "screen_view", {
+            screen_name: title,
+          });
+          window.gtag("event", "slide", {
+            content_type: "slide",
+            content_id: title,
+          });
+          observer.unobserve(target);
+        });
+      }, options);
+
+      slides.forEach((slide) => observer.observe(slide));
+    },
+    false,
+  );
+</script>
