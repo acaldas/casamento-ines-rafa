@@ -28,10 +28,10 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<div class={`flex items-center justify-between ${className}`}>
+<div class={`flex items-center justify-between 2xl:gap-0 gap-10 ${className}`}>
   {
     items.map((item) => (
-      <div class="flex flex-col items-center max-w-[220px] sm:max-w-[160px]">
+      <div class="flex flex-col items-center max-w-[260px] 2xl:max-w-[220px] sm:max-w-[160px]">
         <Image
           src={item.image}
           alt={`${item.question} ${item.answer}`}
