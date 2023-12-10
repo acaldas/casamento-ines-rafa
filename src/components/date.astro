@@ -28,7 +28,7 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<div class={`flex items-center justify-between 2xl:gap-0 gap-10 ${className}`}>
+<div class={`flex items-start justify-between 2xl:gap-0 gap-10 ${className}`}>
   {
     items.map((item) => (
       <div class="flex flex-col items-center max-w-[260px] 2xl:max-w-[220px] sm:max-w-[160px]">
@@ -38,8 +38,8 @@ const { className } = Astro.props;
           class="mr-[-20%]"
         />
         <div class="bg-line w-[1px] h-12 mt-4 mb-2" />
-        <p class="alternate uppercase mb-2">{item.question}</p>
-        <p class="font-semibold text-center">{item.answer}</p>
+        <p class="alternate uppercase mb-2 xs:text-sm">{item.question}</p>
+        <p class="font-semibold text-center xs:text-sm">{item.answer}</p>
       </div>
     ))
   }

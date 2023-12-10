@@ -9,7 +9,7 @@ const { title, background = "bg-background", className } = Astro.props;
 
 <div
   class=`slide-item min-h-full ${background} snap-always snap-start
-    px-[74px] pb-[74px] lg:px-[38px] lg:pb-[38px]  flex flex-col overflow-x-hidden ${className}`
+    px-[74px] pb-[74px] lg:px-[38px] lg:pb-[38px] sm:px-6 sm:pb-6 flex flex-col overflow-x-hidden ${className}`
   id={title ? escape(title) : undefined}
   data-title={title}
 >

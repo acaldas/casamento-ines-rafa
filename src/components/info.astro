@@ -61,7 +61,7 @@ const items = [
           class="flex items-end justify-between gap-10 overflow-hidden lg:flex-col lg:items-center"
           id={item.title ? escape(item.title) : undefined}
         >
-          <div class="text-2xl flex-shrink-0 max-w-[510px] lg:max-w-[90%] lg:text-center">
+          <div class="text-2xl xs:text-base flex-shrink-0 max-w-[510px] lg:max-w-[90%] lg:text-center">
             <Image
               src={item.icon}
               alt="Estacionamento"
@@ -69,7 +69,7 @@ const items = [
             />
             <Fragment set:html={item.text} />
           </div>
-          <div class="flex-1 max-w-[40%]">
+          <div class="flex-1 max-w-[40%] md:max-w-[66%]">
             <Image
               src={item.image}
               alt="Estacionamento"
