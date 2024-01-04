@@ -22,15 +22,14 @@ if (Astro.request.method === "POST") {
     const apiKey = client.authentications["api-key"];
     apiKey.apiKey = import.meta.env.BREVO_API_KEY;
 
+    const emails: string[] = import.meta.env.EMAIL_CONTACT.split(",");
     const apiInstance = new Brevo.TransactionalEmailsApi();
     const response = await apiInstance.sendTransacEmail({
       sender: { email: "website@casamento.pt" },
-      to: [
-        {
-          email: import.meta.env.EMAIL_CONTACT,
-          name: "Casamento Inês & Rafael",
-        },
-      ],
+      to: emails.map((email) => ({
+        email,
+        name: email.slice(0, email.indexOf("@")),
+      })),
       subject: `Mensagem de ${name}`,
       htmlContent: `
         <div>
