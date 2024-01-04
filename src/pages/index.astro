@@ -34,9 +34,9 @@ import SlideItem from "../components/slide-item.astro";
     "DOMContentLoaded",
     function () {
       const element = window.location.hash
-        ? document.querySelector(window.location.hash)
+        ? document.querySelector(`[id='${window.location.hash.slice(1)}']`)
         : null;
-      console.log("scroll", element);
+
       if (!element) {
         return null;
       }

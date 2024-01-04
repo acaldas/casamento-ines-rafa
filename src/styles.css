@@ -22,10 +22,10 @@
   }
 
   .form-input {
-    @apply rounded border-0 focus:ring-0 shadow focus:shadow-lg;
+    @apply bg-transparent border-t-0 border-x-0 border-white focus:ring-0 focus:border-white pt-0 pb-0.5 focus:border-b-2;
   }
 
   .form-label {
-    @apply text-green text-lg font-medium mb-2 min-h-[1.75rem] inline-block;
+    @apply font-medium mb-2 min-h-[1.75rem] flex flex-col flex-1;
   }
 }
