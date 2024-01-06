@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  background-color: "#fcf8ec";
   font-family: Quicksand, system-ui, sans-serif;
 }
 

@@ -16,4 +16,7 @@ export default defineConfig({
   ],
   output: "server",
   adapter: vercel(),
+  devToolbar: {
+    enabled: false,
+  },
 });
